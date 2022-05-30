@@ -5,6 +5,7 @@ var morgan = require('morgan')
 const app = express()
 
 app.use(express.json())
+app.use(express.static('build'))
 app.use(cors())
 
 morgan.token('data', function (req, res) {return JSON.stringify(req.body)})
