@@ -4,7 +4,7 @@ const url = process.env.MONGODB_URI
 
 console.log('connecting to', url)
 mongoose.connect(url)
-  .then(result => {
+  .then(() => {
     console.log('connected to MongoDB')
   })
   .catch((error) => {
@@ -12,10 +12,10 @@ mongoose.connect(url)
   })
 
 const numberValidator = value => {
-  re = /^\d{2,3}-\d{4,}$/
+  const re = /^\d{2,3}-\d{4,}$/
   return re.test(value) && value.length >= 8
 }
-const custom = [numberValidator, `Given number is invalid.`]
+const custom = [numberValidator, 'Given number is invalid.']
 
 const personSchema = new mongoose.Schema({
   name: {
